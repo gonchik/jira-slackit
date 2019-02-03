@@ -162,7 +162,7 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
             loadingErrorCollection.addErrorMessage("No specific customfields setup for addition slack channel membership");
             return;
         }
-        List<String> listOfFields = Arrays.asList(listOfIDs.split("\\s*,\\s*"));
+        String[] listOfFields = listOfIDs.split("\\s*,\\s*");
         CustomField tmp;
         for (String id : listOfFields) {
             tmp = customFieldManager.getCustomFieldObject("customfield_" + id);

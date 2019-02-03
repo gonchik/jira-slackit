@@ -151,7 +151,7 @@ It seems you never used Slack It, it first requires authorization to communicate
         jiraIssueKey: '${issue.key}',
         jira_membersStr: '${jiraMembers}',
         jira_members: [],
-        servletLinkSlackChannelURL: '${contextPath}/plugins/servlet/slackAuthorization?action=setChannelId',
+        servletLinkSlackChannelURL: '${contextPath}/plugins/servlet/slackAuthorization?action=setChannelId'
     };
 
     var slackIt = new SlackItClient(slackItContext);

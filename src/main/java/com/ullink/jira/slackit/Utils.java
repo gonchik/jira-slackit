@@ -34,7 +34,7 @@ public class Utils {
         HashSet<String> inwardLinks = new HashSet<>();
         HashSet<String> outwardLinks = new HashSet<>();
         
-        List<String> listOfLinks = Arrays.asList(issuelinksConfigString.split("\\s*,\\s*"));
+        String[] listOfLinks = issuelinksConfigString.split("\\s*,\\s*");
         for (String link : listOfLinks) {
             String dir;
             String id;
