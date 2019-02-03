@@ -545,7 +545,7 @@ var SlackItClient = (function () {
         );
         _this.rxClient.inviteSlackUserToChannelObservable(channelId, user.slackId, _this.context.token, _this.context.slackApiBaseUrl).subscribe(
             function(inviteData) {
-                if (!inviteData.error || inviteData.error == 'already_in_channel' || inviteData.error == 'cant_invite_self') {
+                if (!inviteData.error || inviteData.error === 'already_in_channel' || inviteData.error == 'cant_invite_self') {
                     AJS.$('#status-channel-gueststatus').append('<span class="aui-icon aui-icon-small aui-iconfont-success"></span> Invite ok for ' + user.email + '<br/>');
                     console.log('Invite ok for ' + JSON.stringify(user));
                 } else {

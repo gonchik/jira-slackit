@@ -46,7 +46,7 @@
       // fallback for older versions of Chrome and Safari
       if (isFn(/x/)) {
         isFn = function(value) {
-          return typeof value == 'function' && toString.call(value) == '[object Function]';
+          return typeof value === 'function' && toString.call(value) == '[object Function]';
         };
       }
 
