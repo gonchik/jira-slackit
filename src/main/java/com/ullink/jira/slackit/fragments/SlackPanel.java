@@ -27,6 +27,7 @@ public class SlackPanel extends AbstractJiraContextProvider {
 
     private final UserTokenService userTokenService;
     private SlackItConfigurationHolder slackItConfigurationHolder;
+    private static boolean isDebugMode = false;
 
     public SlackPanel(UserTokenService userTokenService, SlackItConfigurationHolder slackItConfigurationHolder) {
         this.userTokenService = checkNotNull(userTokenService);
@@ -61,6 +62,7 @@ public class SlackPanel extends AbstractJiraContextProvider {
 
         Gson gson = new Gson();
         params.put("jiraMembers", gson.toJson(jiraMembers));
+        params.put("isDebugMode", isDebugMode);
 
         return params;
     }

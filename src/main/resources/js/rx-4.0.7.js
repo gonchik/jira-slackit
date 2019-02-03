@@ -46,7 +46,7 @@
       // fallback for older versions of Chrome and Safari
       if (isFn(/x/)) {
         isFn = function(value) {
-          return typeof value === 'function' && toString.call(value) == '[object Function]';
+          return typeof value === 'function' && toString.call(value) === '[object Function]';
         };
       }
 
@@ -1207,7 +1207,7 @@ var isEqual = Rx.internals.isEqual = function (value, other) {
         .replace(/toString| for [^\]]+/g, '.*?') + '$'
     );
 
-    var setImmediate = typeof (setImmediate = freeGlobal && moduleExports && freeGlobal.setImmediate) == 'function' &&
+    var setImmediate = typeof (setImmediate = freeGlobal && moduleExports && freeGlobal.setImmediate) === 'function' &&
       !reNative.test(setImmediate) && setImmediate;
 
     function postMessageSupported () {
@@ -6026,7 +6026,7 @@ Rx.Observable.prototype.flatMapLatest = function(selector, resultSelector, thisA
     return AnonymousSubject;
   }(Observable));
 
-  if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
+  if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
     root.Rx = Rx;
 
     define(function() {

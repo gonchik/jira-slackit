@@ -402,7 +402,7 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
 
     @Override
     public void onStop() {
-        LOG.info("Lifycle plugin STOP - Nothing to do");
+        LOG.info("Lifecycle plugin STOP - Nothing to do");
     }
 
 }
