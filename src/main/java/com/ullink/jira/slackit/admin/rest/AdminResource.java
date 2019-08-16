@@ -32,7 +32,7 @@ public class AdminResource {
     @Path("/reloadProperties")
     @Produces({MediaType.APPLICATION_JSON})
     public Response reloadProperties(@Context HttpServletRequest request) {
-        LOG.info("Reloading slakit configuration");
+        LOG.info("Reloading slackIt configuration");
         UserProfile user = userManager.getRemoteUser(request);
         if (user == null || !userManager.isSystemAdmin(user.getUserKey())) {
             return Response.status(Status.UNAUTHORIZED).build();

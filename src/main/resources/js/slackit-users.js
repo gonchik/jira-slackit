@@ -220,7 +220,6 @@ var HttpRxClient = (function () {
         return subject;
     };
 
-
     return HttpRxClient;
 }());
 
@@ -238,13 +237,13 @@ var SlackItClient = (function () {
         console.log('onSlackItDialogShown()');
 
         // fetch channels list
-        AJS.$('#loadingSpinner').spin();
+        AJS.$('#loading-spinner').spin();
         this.rxClient.getSlackChannelsListObservable(this.context.token, this.context.slackApiBaseUrl)
             .subscribe(
                 function (slackChannelsData) {
                     console.log('* channels: ' + JSON.stringify(slackChannelsData));
-                    AJS.$('#loadingDiv').hide();
-                    AJS.$('#loadingSpinner').spinStop();
+                    AJS.$('#loading-div').hide();
+                    AJS.$('#loading-spinner').spinStop();
                     slackData.channels = slackChannelsData;
 
                     // check channel doesn't already exist
@@ -261,7 +260,7 @@ var SlackItClient = (function () {
                 },
                 function (error) {
                     console.log('Error: ' + error);
-                    AJS.$('#loadingSpinner').spinStop();
+                    AJS.$('#loading-spinner').spinStop();
                     AJS.messages.error({
                         title: 'Channel list load error',
                         body: 'Unable to load channels list. Please reload page. Error: ' + error
@@ -433,12 +432,12 @@ var SlackItClient = (function () {
         AJS.$('#status-channel-creating-spinner').spin();
 
         // Channel creation needed
-        channelName = AJS.$('#slackChannelCreateInput').val().toLowerCase();
+        channelName = AJS.$('#slack-channel-create-input').val().toLowerCase();
         if (!channelName || channelName.length < 3) {
-            AJS.$('#slackChannelCreateInputError').show();
+            AJS.$('#slack-channel-create-input-error').show();
             return;
         }
-        AJS.$('#slackChannelCreateInputError').hide();
+        AJS.$('#slack-channel-create-input-error').hide();
 
         console.log('Ready to create ' + channelName);
         this.rxClient.createSlackChannelObservable(channelName, this.context.token, this.context.slackApiBaseUrl).subscribe(
@@ -535,19 +534,6 @@ var SlackItClient = (function () {
 
     SlackItClient.prototype.onSlackItInvitePhaseInviteUser = function (self, user, channelId, channelName, nbGuests) {
         var _this = self;
-        var topic = AJS.params.baseURL + '/browse/' + _this.context.jiraIssueKey;
-        _this.rxClient.setTopicAsJiraLinkToChannelObservable(channelId, topic, _this.context.token, _this.context.slackApiBaseUrl).subscribe(
-            function (topicSetData) {
-                if (topicSetData.ok) {
-                    console.log('Topic has been set for "#' + channelName + '"');
-                }
-            },
-            function (error) {
-                console.log('Error: ' + error);
-            },
-            function () {
-            }
-        );
         _this.rxClient.inviteSlackUserToChannelObservable(channelId, user.slackId, _this.context.token, _this.context.slackApiBaseUrl).subscribe(
             function (inviteData) {
                 if (!inviteData.error || inviteData.error === 'already_in_channel' || inviteData.error === 'cant_invite_self') {
@@ -613,7 +599,7 @@ var SlackItClient = (function () {
     SlackItClient.prototype.onSlackItDialogDoStepLinkExistingChannel = function (slackData, channelName) {
         console.log('onSlackItDialogDoStepLinkExistingChannel(): candidate channel=' + channelName + '(id=' + slackData.channels[channelName].id + '). Ready to link up with Slack channel...');
         AJS.$('#slack-channel-useexisting-holder').show();
-        AJS.$('#slackChannelFoundInput').val(channelName);
+        AJS.$('#slack-channel-found-input').val(channelName);
 
         slackData.context.skipCreateChannel = true;
         this.onSlackItDialogDoStepInviteUsers(slackData, channelName);
@@ -623,11 +609,25 @@ var SlackItClient = (function () {
     SlackItClient.prototype.onSlackItDialogDoStepCreateChannel = function (slackData) {
         console.log('onSlackItDialogDoStepCreateChannel()');
         AJS.$('#slack-channel-create-holder').show();
-        AJS.$('#slackChannelCreateInput').val(this.context.slackChannelPreferredName);
+        AJS.$('#slack-channel-create-input').val(this.context.slackChannelPreferredName);
 
         slackData.context.skipCreateChannel = false;
+        var topic = AJS.params.baseURL + '/browse/' + this.context.jiraIssueKey;
+        this.setTopicAsJiraLinkToChannelObservable(this.context.channelId, topic, this.context.token, this.context.slackApiBaseUrl).subscribe(
+            function (topicSetData) {
+                if (topicSetData.ok) {
+                    console.log('Topic has been set as ' +  topic  + '"');
+                }
+            },
+            function (error) {
+                console.log('Error: ' + error);
+            },
+            function () {
+            }
+        );
         this.onSlackItDialogDoStepInviteUsers(slackData, this.context.slackChannelPreferredName);
     };
+
 
     SlackItClient.prototype.onSlackDataReady = function (slackData) {
         var _this = this;
@@ -641,21 +641,21 @@ var SlackItClient = (function () {
         this.toggleSlackAuthorization(false);
 
         // * SlackIt pannel
-        AJS.$('#createSlack').hide();
+        AJS.$('#create-slack').hide();
         if (!slackData.channel.ok) {
             console.log('Channel info couldn\'t be queried, error: ' + slackData.channel.error + ', for channelId=' + this.context.slackChannelId);
 
             if ("channel_not_found" === slackData.channel.error) {
                 // channel_not_found: either channel needs to be created, or a channel exists but is not linked to jira yet (no slackChannelId)
                 console.log('Channel needs creation/link.');
-                AJS.$("#createSlack").click(
+                AJS.$("#create-slack").click(
                     function () {
                         AJS.dialog2("#slack-setupchannel-dialog").on("show", function () {
                             _this.onSlackItDialogShown(slackData);
                         });
                         AJS.dialog2("#slack-setupchannel-dialog").show();
                     });
-                AJS.$('#createSlack').show();
+                AJS.$('#create-slack').show();
             } else {
                 console.log('Unhandled Slack error: ' + slackData.channel.error);
             }
@@ -741,11 +741,11 @@ var SlackItClient = (function () {
     SlackItClient.prototype.toggleSlackAuthorization = function (showConnect) {
         console.log('toggleSlackAuthorization(): ' + showConnect);
         if (showConnect) {
-            AJS.$('#slackAuthorization').show();
-            AJS.$('#slackAuthorizationSlackLogout').hide();
+            AJS.$('#slack-authorization').show();
+            AJS.$('#slack-authorization-slack-logout').hide();
         } else {
-            AJS.$('#slackAuthorization').hide();
-            AJS.$('#slackAuthorizationSlackLogout').show();
+            AJS.$('#slack-authorization').hide();
+            AJS.$('#slack-authorization-slack-logout').show();
         }
     };
 

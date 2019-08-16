@@ -5,13 +5,13 @@
     #set ($token = "")
 #end
 
-<div id="slackAuthorization" style="display: none;">
+<div id="slack-authorization" style="display: none;">
 It seems you never used Slack It, it first requires authorization to communicate to Slack: <a href="${contextPath}/plugins/servlet/slackAuthorization?requestToken=${baseUrl}">Setup access</a>
 </div>
 
-<button class="aui-button" id="createSlack" style="display: none;">
+<button class="aui-button" id="create-slack" style="display: none;">
     <!-- find a way to get the image url of the slack image located in  /images -->
-    <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hopInIcon" alt="Slack It">
+    <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hop-in-icon" alt="Slack It">
     Slack this issue
 </button>
 
@@ -20,7 +20,7 @@ It seems you never used Slack It, it first requires authorization to communicate
     <li>
         <dl>
             <dt>
-                <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hopInIcon" alt="Slack It">
+                <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hop-in-icon" alt="Slack It">
                 Channel:
             </dt>
             <dd><span><a id="channel-slack-header-channame" href="#" target="_blank"></a></span><span id="channel-slack-header-chanstatus"></span></dd>
@@ -37,7 +37,7 @@ It seems you never used Slack It, it first requires authorization to communicate
 </div>
 
 <div style="display: none;">
-    <a id="slackAuthorizationSlackLogout" style="display: none;" href="${contextPath}/plugins/servlet/slackAuthorization?action=deleteToken">Disconnect you from Slack-It</a>
+    <a id="slack-authorization-slack-logout" style="display: none;" href="${contextPath}/plugins/servlet/slackAuthorization?action=deleteToken">Disconnect you from Slack-It</a>
 </div>
 
 <!-- for dialog notifications -->
@@ -71,25 +71,25 @@ It seems you never used Slack It, it first requires authorization to communicate
         <!-- Control UI -->
         <div id="aui-dialog2-content-status-user-panel">
             <form class="aui">
-                <div id="loadingDiv">
+                <div id="loading-div">
                     <p>Loading Slack channels data...</p>
-                    <div id="loadingSpinner" class="button-spinner"></div>
+                    <div id="loading-spinner" class="button-spinner"></div>
                 </div>
                 <!-- Create channel-->
                 <div id="slack-channel-create-holder" style="display: none;">
                     <h3>Channel</h3>
                     <div class="field-group">
-                        <label for="slackChannelCreateInput">Name</label>
-                        <input class="text medium-field" type="text" id="slackChannelCreateInput"><div class="description">This channel does not exist and will be created <span class="aui-icon aui-icon-small aui-iconfont-list-add">OK</span></div>
-                        <div id="slackChannelCreateInputError" class="error" style="display: none;">Invalid channel name!</div>
+                        <label for="slack-channel-create-input">Name</label>
+                        <input class="text medium-field" type="text" id="slack-channel-create-input"><div class="description">This channel does not exist and will be created <span class="aui-icon aui-icon-small aui-iconfont-list-add">OK</span></div>
+                        <div id="slack-channel-create-input-error" class="error" style="display: none;">Invalid channel name!</div>
                     </div>
                 </div>
                 <!-- Use existing channel-->
                 <div id="slack-channel-useexisting-holder" style="display: none;">
                     <h3>Channel</h3>
                     <div class="field-group">
-                        <label for="slackChannelFoundInput">Name</label>
-                        <input class="text medium-field" type="text" id="slackChannelFoundInput" disabled><div class="description">This channel already exists <span class="aui-icon aui-icon-small aui-iconfont-approve">OK</span></div>
+                        <label for="slack-channel-found-input">Name</label>
+                        <input class="text medium-field" type="text" id="slack-channel-found-input" disabled><div class="description">This channel already exists <span class="aui-icon aui-icon-small aui-iconfont-approve">OK</span></div>
                     </div>
                 </div>
                 <!-- Invite users -->
