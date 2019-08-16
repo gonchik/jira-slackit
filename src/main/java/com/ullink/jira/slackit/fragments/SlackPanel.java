@@ -92,7 +92,7 @@ public class SlackPanel extends AbstractJiraContextProvider {
             }
         }
 
-        Project project = ComponentAccessor.getProjectManager().getProjectObj(issue.getProjectObject().getId());
+        Project project = ComponentAccessor.getProjectManager().getProjectObj(issue.getProjectId());
         if (project != null && project.getProjectLead() != null) {
             jiraMembers.setProjectLead(JiraMember.getJiraMember(project.getProjectLead()));
         }

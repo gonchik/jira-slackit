@@ -6,7 +6,7 @@
 
     <groupId>com.ullink.jira</groupId>
     <artifactId>jira-slackit</artifactId>
-    <version>8.0.0</version>
+    <version>8.0.1</version>
     <name>Slack It</name>
     <description>The Slack extension for Jira. Link your Jira issues and you Slack channels to create
         interactive and efficient discussions</description>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.10.1</version>
+            <version>2.10.3</version>
             <scope>provided</scope>
         </dependency>
 
@@ -131,13 +131,14 @@
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>3.0.2</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -165,7 +166,7 @@
         </plugins>
     </build>
     <properties>
-        <jira.version>7.6.0</jira.version>
+        <jira.version>7.6.12</jira.version>
         <amps.version>6.3.21</amps.version>
         <atlassian.spring.scanner.version>1.2.6</atlassian.spring.scanner.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

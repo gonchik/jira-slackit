@@ -20,6 +20,7 @@ public class SlakItAdminActions extends JiraWebActionSupport {
     }
 
 
+    @Override
     public String doDefault() throws Exception {
         LOG.debug("doDefault");
         return INPUT;
