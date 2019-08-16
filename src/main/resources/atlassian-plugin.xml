@@ -37,14 +37,11 @@
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <dependency>com.atlassian.auiplugin:dialog2</dependency>
         <dependency>com.atlassian.auiplugin:aui-labels</dependency>
-
         <resource type="download" name="slackit-users.css" location="css/slackit-users.css"/>
         <resource type="download" name="rx-4.0.7.js" location="js/rx-4.0.7.js"/>
         <resource type="download" name="slackit-users.js" location="js/slackit-users.js"/>
         <resource type="download" name="images/" location="images"/>
-
 		<context>atl.general</context>
-
 		<!-- Commented as it not works in the search view, the js is not included-->
         <!-- <context>ul-jira-custom-slack-it</context> -->
     </web-resource>
@@ -120,7 +117,8 @@
 	</webwork1>
 
     <web-resource key="slackit-admin-resources" name="Slack it Admin Web Resources">
-		<resource type="download" name="slackit-admin.js" location="js/slackit-admin.js"/> 
+		<resource type="download" name="slackit-admin.js" location="js/slackit-admin.js"/>
+		<resource type="download" name="slackit-admin.css" location="css/slackit-admin.css"/>
         <context>atl.admin</context>
     </web-resource>
 
