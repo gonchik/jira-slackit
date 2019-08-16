@@ -41,13 +41,12 @@ All configuration is done directly in the properties file. Current values and re
 * Once deployed, you need to create a custom field of type 'Slack channel custom field'. This custom field will store the Slack channel id associated to an issue
 * You will need to edit the properties to add the id of this custom field and reload the configuration and you are all set
 
-People and usage
+Usage
 ============
 
-# Contributors
-* Mickael Billot
-* Arnaud Jaffre
-* Francois Sergot
+# Contribution
+
+We are happy to get PR requests
 
 # License
 Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) 
