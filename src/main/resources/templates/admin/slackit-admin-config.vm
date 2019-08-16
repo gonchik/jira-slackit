@@ -41,7 +41,7 @@
 <table class="aui">
     <caption>File content</caption>
     <tbody>
-        #foreach ($mapEntry in $action.slackItConfigurationHolder.getProperties().entrySet())
+        #foreach ($mapEntry in ${action.slackItConfigurationHolder.getProperties().entrySet()})
         <tr>
             <td class="slack-table-major-column40%"><b>${mapEntry.key}</b></td>
             <td class="slack-table-column">${mapEntry.value}</td>

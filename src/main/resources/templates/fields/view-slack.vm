@@ -33,7 +33,7 @@ It seems you never used Slack It, it first requires authorization to communicate
 </ul>
 
 <div id="channelSlack-history"></div>
-<div class="slackMorePanel"><a id="channelSlack-history-seemore" href="#" target="_blank">See more...</a></span></div>
+<div class="slackMorePanel"><span><a id="channelSlack-history-seemore" href="#" target="_blank">See more...</a></span></div>
 </div>
 
 <div style="display: none;">
