@@ -11,7 +11,7 @@ It seems you never used Slack It, it first requires authorization to communicate
 
 <button class="aui-button" id="createSlack" style="display: none;">
     <!-- find a way to get the image url of the slack image located in  /images -->
-    <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hopInIcon">
+    <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hopInIcon" alt="Slack It">
     Slack this issue
 </button>
 
@@ -20,7 +20,7 @@ It seems you never used Slack It, it first requires authorization to communicate
     <li>
         <dl>
             <dt>
-                <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hopInIcon">
+                <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hopInIcon" alt="Slack It">
                 Channel:
             </dt>
             <dd><span><a id="channelSlack-header-channame" href="#" target="_blank"></a></span><span id="channelSlack-header-chanstatus"></span></dd>
