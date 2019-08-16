@@ -1,4 +1,4 @@
-div#channelSlack-history {
+div#channel-slack-history {
     border-radius: 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     background: #fff;
@@ -8,16 +8,16 @@ div#channelSlack-history {
     padding: 6px 0;
     overflow: auto;
 }
-.slackMsg {
+.slack-msg {
     padding: 5px;
     font-size: 12px;
 }
-.slackMsgDate {
+.slack-msg-date {
     font-size: 11px;
     font-style: italic;
     color: #9e9ea6;
 }
-.slackMorePanel {
+.slack-more-panel {
     font-size: 11px;
     background-color: #eee;
     text-align: center;
@@ -27,13 +27,13 @@ div#channelSlack-history {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     font-style: italic;
 }
-.slackMsg:hover {
+.slack-msg:hover {
    background-color: #E6E6E6 !important;
 }
-.slackMsg:nth-child(even) {
+.slack-msg:nth-child(even) {
     background-color: #f5f5f5;
 }
-span#channelSlack-header-chanstatus {
+span#channel-slack-header-chanstatus {
     margin: 0 5px;
 }
 .hopInIcon {
@@ -42,6 +42,6 @@ span#channelSlack-header-chanstatus {
     margin-right: 5px;
     vertical-align: middle;
 }
-span#channelSlack-header-chanmembers span {
+span#channel-slack-header-chanmembers span {
     font-size: 12px;
 }

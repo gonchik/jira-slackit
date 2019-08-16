@@ -343,7 +343,7 @@ var SlackItClient = (function () {
                 displayedEmails.push(e.email);
             }
         });
-        AJS.$('#slack-invite-guestslist').html('<b>' + body + '</b>');
+        AJS.$("#slack-invite-guestslist").html('<b>' + body + '</b>');
 
         // bind remove guest click
         AJS.$.each(guestList, function (key, e) {
@@ -664,32 +664,32 @@ var SlackItClient = (function () {
 
             var channelName = slackData.channel.channel.name;
             var channelLink = this.context.slackBaseUrl + "/messages/" + channelName + "/";
-            AJS.$('#channelSlack-header-channame').html('#' + channelName);
-            AJS.$('#channelSlack-header-channame').attr("href", channelLink);
-            AJS.$('#channelSlack-history-seemore').attr("href", channelLink);
+            AJS.$('#channel-slack-header-channame').html('#' + channelName);
+            AJS.$('#channel-slack-header-channame').attr("href", channelLink);
+            AJS.$('#channel-slack-history-seemore').attr("href", channelLink);
 
             if (slackData.channel.channel.hasOwnProperty('is_archived') && slackData.channel.channel.is_archived) {
                 console.log('channel: is_archived');
-                AJS.$('#channelSlack-header-chanstatus').html('archived');
-                AJS.$('#channelSlack-header-chanstatus').addClass("aui-lozenge aui-lozenge-current");
+                AJS.$('#channel-slack-header-chanstatus').html('archived');
+                AJS.$('#channel-slack-header-chanstatus').addClass("aui-lozenge aui-lozenge-current");
             } else {
-                AJS.$('#channelSlack-header-chanstatus').removeClass("aui-lozenge aui-lozenge-current");
+                AJS.$('#channel-slack-header-chanstatus').removeClass("aui-lozenge aui-lozenge-current");
             }
 
             var membersBody = '';
             AJS.$.each(slackData.channel.channel.members, function (index, e) {
                 membersBody += '<span class="aui-label">' + slackData.users.byId[e].name + '</span>&nbsp;';
             });
-            AJS.$('#channelSlack-header-chanmembers').html(membersBody);
+            AJS.$('#channel-slack-header-chanmembers').html(membersBody);
 
             var body = '';
             var nbMessages = 0;
             var filteredType = ['channel_join', 'channel_leave', 'channel_archive'];
             AJS.$.each(slackData.history.messages, function (index, e) {
                 if (e.type === 'message' && filteredType.indexOf(e.subtype) < 0) {
-                    body += '<div class="slackMsg">';
+                    body += '<div class="slack-msg">';
                     body += '<span><b>' + slackData.users.byId[e.user].name + '</span></b>&nbsp;';
-                    body += '<span class="slackMsgDate">' + _this.timeConverter(_this.parseSlackTSField(e)) + '</span><br/>';
+                    body += '<span class="slack-msg-date">' + _this.timeConverter(_this.parseSlackTSField(e)) + '</span><br/>';
                     body += e.text;
                     body += '</div>';
                     nbMessages++;
@@ -697,14 +697,14 @@ var SlackItClient = (function () {
             });
 
             if (nbMessages === 0) {
-                body += '<div class="slackMsg">No messages</div>';
+                body += '<div class="slack-msg">No messages</div>';
             }
 
-            AJS.$('#channelSlack-history').append(body);
-            AJS.$("#channelSlack").show();
+            AJS.$('#channel-slack-history').append(body);
+            AJS.$("#channel-slack").show();
 
-            if (AJS.$('#channelSlack-history').height() > 300) {
-                AJS.$('#channelSlack-history').height(300);
+            if (AJS.$('#channel-slack-history').height() > 300) {
+                AJS.$('#channel-slack-history').height(300);
             }
         }
 

@@ -15,7 +15,7 @@ It seems you never used Slack It, it first requires authorization to communicate
     Slack this issue
 </button>
 
-<div id="channelSlack" style="display: none;">
+<div id="channel-slack" style="display: none;">
 <ul class="item-details">
     <li>
         <dl>
@@ -23,17 +23,17 @@ It seems you never used Slack It, it first requires authorization to communicate
                 <img src="${contextPath}/download/resources/com.ullink.jira.slackit:slackit-resources/images/slack-22.png" class="hopInIcon" alt="Slack It">
                 Channel:
             </dt>
-            <dd><span><a id="channelSlack-header-channame" href="#" target="_blank"></a></span><span id="channelSlack-header-chanstatus"></span></dd>
+            <dd><span><a id="channel-slack-header-channame" href="#" target="_blank"></a></span><span id="channel-slack-header-chanstatus"></span></dd>
         </dl>
         <dl>
             <dt>Members:</dt>
-            <dd><span id="channelSlack-header-chanmembers"></span></dd>
+            <dd><span id="channel-slack-header-chanmembers"></span></dd>
         </dl>
     </li>
 </ul>
 
-<div id="channelSlack-history"></div>
-<div class="slackMorePanel"><span><a id="channelSlack-history-seemore" href="#" target="_blank">See more...</a></span></div>
+<div id="channel-slack-history"></div>
+<div class="slack-more-panel"><span><a id="channel-slack-history-seemore" href="#" target="_blank">See more...</a></span></div>
 </div>
 
 <div style="display: none;">

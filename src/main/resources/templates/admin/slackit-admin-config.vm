@@ -38,7 +38,7 @@
     </tbody>
 </table>
 
-<table class="aui">
+<table class="aui aui-table-sortable">
     <caption>File content</caption>
     <tbody>
         #foreach ($mapEntry in ${action.slackItConfigurationHolder.getProperties().entrySet()})

@@ -2777,7 +2777,7 @@ var ObserveOnObservable = (function (__super__) {
     }
     isScheduler(scheduler) || (scheduler = currentThreadScheduler);
     return new FromObservable(iterable, mapper, scheduler);
-  }
+  };
 
   var FromArrayObservable = (function(__super__) {
     inherits(FromArrayObservable, __super__);

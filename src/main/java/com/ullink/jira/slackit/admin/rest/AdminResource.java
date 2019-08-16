@@ -21,7 +21,7 @@ public class AdminResource {
 
     private static final Logger LOG = Logger.getLogger(AdminResource.class);
     private final UserManager userManager;
-    private SlackItConfigurationHolder slackItConfigurationHolder;
+    private final SlackItConfigurationHolder slackItConfigurationHolder;
 
     public AdminResource(UserManager userManager, SlackItConfigurationHolder slackItConfigurationHolder) {
         this.userManager = userManager;
