@@ -1,6 +1,8 @@
 Overview
 ============
-This is a Jira plugin allowing you to integrate Slack channels and Jira issues in an easy and non-intrusive way (much like what Atlassian do with hipchat)
+
+This is a Jira plugin allowing you to integrate Slack channels and Jira issues in an easy and non-intrusive way 
+(much like what Atlassian do with HipChat).
 
 From any Jira issue, you can:
 * create a Slack channel to discuss the issue
@@ -15,7 +17,7 @@ Invite dialog example:
 
 How to compile
 ============
-This plugin works with Jira 7 (tested with 7.1.7 & 7.2.1 & 7.6.3 & 7.6.10).
+This plugin works with Jira 7 (tested with 7.1.7 & 7.2.1 & 7.6.3 & 7.6.12).
 
 In order to compile the code and a deployable plugin, you need to have Atlassian Plugin development kit installed and working on your machine (see https://developer.atlassian.com/docs/getting-started). The initial release was built using version 6.1.0
 
@@ -48,4 +50,5 @@ People and usage
 * Francois Sergot
 
 # License
-Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) with no warranty (expressed or implied) for any purpose.
+Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) 
+with no warranty (expressed or implied) for any purpose.

@@ -282,6 +282,7 @@ var SlackItClient = (function () {
             console.log('jiraMembersJson: ' + this.context.jira_membersStr.replace(/&quot;/g, '"'));
             console.log('servletLinkSlackChannelURL: ' + this.context.servletLinkSlackChannelURL);
         }
+
         var slackSource = Rx.Observable.zip(
             this.rxClient.getSlackUsersObservable(this.context.token, this.context.slackApiBaseUrl),
             this.rxClient.getSlackSingleChannelInfoObservable(this.context.slackChannelId, this.context.token, this.context.slackApiBaseUrl),
@@ -630,7 +631,7 @@ var SlackItClient = (function () {
 
     SlackItClient.prototype.onSlackDataReady = function (slackData) {
         var _this = this;
-        console.log('onSlackDataReady(): ' + JSON.stringify(slackData));
+        console.log('onSlackDataReady()');
         console.log('* slackChannelId: ' + this.context.slackChannelId + ', slackChannelPreferredName: ' + this.context.slackChannelPreferredName);
         slackData.context = {};
 
