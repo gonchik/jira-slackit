@@ -27,7 +27,7 @@ public class SlackPanel extends AbstractJiraContextProvider {
 
     private final UserTokenService userTokenService;
     private SlackItConfigurationHolder slackItConfigurationHolder;
-    private static boolean isDebugMode = false;
+    private static boolean isDebugMode = true;
 
     public SlackPanel(UserTokenService userTokenService, SlackItConfigurationHolder slackItConfigurationHolder) {
         this.userTokenService = checkNotNull(userTokenService);

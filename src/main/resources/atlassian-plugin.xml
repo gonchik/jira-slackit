@@ -33,7 +33,7 @@
     <resource type="i18n" name="i18n" location="jira-custom-slack-it"/>
     
     <!-- add our web resources -->
-    <web-resource key="slackit-resources" name="Slackit Web Resources">
+    <web-resource key="slackit-resources" name="SlackIt Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <dependency>com.atlassian.auiplugin:dialog2</dependency>
         <dependency>com.atlassian.auiplugin:aui-labels</dependency>
@@ -41,7 +41,7 @@
         <resource type="download" name="rx-4.0.7.js" location="js/rx-4.0.7.js"/>
         <resource type="download" name="slackit-users.js" location="js/slackit-users.js"/>
         <resource type="download" name="images/" location="images"/>
-		<context>atl.general</context>
+		<context>jira.view.issue</context>
 		<!-- Commented as it not works in the search view, the js is not included-->
         <!-- <context>ul-jira-custom-slack-it</context> -->
     </web-resource>
@@ -56,7 +56,7 @@
 	  <description>Component to access Active Objects functionality from the plugin</description>
 	</component-import>
 	
-	<component key="SlackitConfigHolder" name="Slackit centralized configuration loader and provider" class="com.ullink.jira.slackit.managers.impl.SlackItConfigurationHolderImpl" public="true">
+	<component key="SlackitConfigHolder" name="SlackIt centralized configuration loader and provider" class="com.ullink.jira.slackit.managers.impl.SlackItConfigurationHolderImpl" public="true">
 		<interface>com.atlassian.sal.api.lifecycle.LifecycleAware</interface>
 	    <interface>com.ullink.jira.slackit.managers.SlackItConfigurationHolder</interface>
     </component>
@@ -64,7 +64,7 @@
 	<!-- Issue panel definition -->    
 	<web-panel name="SlackPanel" i18n-name-key="slack.panel.name" key="slack.panel" location="atl.jira.view.issue.right.context" weight="40">
 		<label>Slack It</label>
-		<description key="slack.panel.description">The slack panel Plugin</description>
+		<description key="slack.panel.description">The Slack panel Plugin</description>
 		<context-provider class="com.ullink.jira.slackit.fragments.SlackPanel"/>
 		<resource name="view" type="velocity" location="templates/fields/view-slack.vm"/>
 	</web-panel>
