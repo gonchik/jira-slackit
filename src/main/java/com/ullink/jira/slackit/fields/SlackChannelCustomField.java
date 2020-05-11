@@ -20,7 +20,7 @@ import com.ullink.jira.slackit.managers.SlackItConfigurationHolder;
 public class SlackChannelCustomField extends GenericTextCFType implements SortableCustomField<String> {
 
     public static String SEPARATOR = ".";
-    private SlackItConfigurationHolder slackItConfigurationHolder;
+    private final SlackItConfigurationHolder slackItConfigurationHolder;
 
     public SlackChannelCustomField(CustomFieldValuePersister customFieldValuePersister, GenericConfigManager genericConfigManager, TextFieldCharacterLengthValidator textFieldCharacterLengthValidator, final JiraAuthenticationContext jiraAuthenticationContext, SlackItConfigurationHolder slackItConfigurationHolder) {
         super(customFieldValuePersister, genericConfigManager, textFieldCharacterLengthValidator, jiraAuthenticationContext);

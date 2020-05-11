@@ -34,7 +34,7 @@ public class SlackOAuthCalbackServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static final Logger LOG = Logger.getLogger(SlackOAuthCalbackServlet.class.getName());
 
-    private SlackItConfigurationHolder slackItConfigurationHolder;
+    private final SlackItConfigurationHolder slackItConfigurationHolder;
 
     public SlackOAuthCalbackServlet(SlackItConfigurationHolder slackItConfigurationHolder) {
         this.slackItConfigurationHolder = checkNotNull(slackItConfigurationHolder);

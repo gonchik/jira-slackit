@@ -26,8 +26,8 @@ import com.ullink.jira.slackit.service.UserTokenService;
 public class SlackPanel extends AbstractJiraContextProvider {
 
     private final UserTokenService userTokenService;
-    private SlackItConfigurationHolder slackItConfigurationHolder;
-    private static boolean isDebugMode = true;
+    private final SlackItConfigurationHolder slackItConfigurationHolder;
+    private static final boolean isDebugMode = false;
 
     public SlackPanel(UserTokenService userTokenService, SlackItConfigurationHolder slackItConfigurationHolder) {
         this.userTokenService = checkNotNull(userTokenService);

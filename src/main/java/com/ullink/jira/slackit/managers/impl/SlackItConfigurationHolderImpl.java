@@ -229,7 +229,7 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
         return propsFromFile;
     }
 
-    private String getProperty(final String key, final String alt_value) {
+    private String getProperty(final String key, final String altValue) {
         if (slackItProperties == null) {
             loadConfiguration();
             if (slackItProperties == null) {
@@ -243,9 +243,9 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
         }
         String result = slackItProperties.getProperty(key);
         if ((result == null) || (result.trim().length() == 0)) {
-            if (alt_value != null) {
-                result = alt_value;
-                LOG.info("Configuration key missing '" + key + "' using alternative hard coded '" + alt_value + "'");
+            if (altValue != null) {
+                result = altValue;
+                LOG.info("Configuration key missing '" + key + "' using alternative hard coded '" + altValue + "'");
             } else {
                 LOG.info("Configuration key missing '" + key + "' but no alternative hard coded value, setting to null");
                 return null;

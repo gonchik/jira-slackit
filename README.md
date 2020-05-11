@@ -2,7 +2,7 @@ Overview
 ============
 
 This is a Jira plugin allowing you to integrate Slack channels and Jira issues in an easy and non-intrusive way 
-(much like what Atlassian do with HipChat).
+(much like what Atlassian does with HipChat).
 
 From any Jira issue, you can:
 * create a Slack channel to discuss the issue
@@ -21,7 +21,8 @@ This plugin works with Jira 7 (tested with 7.1.7 & 7.2.1 & 7.6.3 & 7.6.12).
 This plugin works with Jira 8 (tested with 8.5.4).
 
 
-In order to compile the code and a deployable plugin, you need to have Atlassian Plugin development kit installed and working on your machine (see https://developer.atlassian.com/docs/getting-started). The initial release was built using version 6.1.0
+In order to compile the code and a deployable plugin, 
+you need to have Atlassian Plugin development kit installed and working on your machine (see https://developer.atlassian.com/docs/getting-started). The initial release built using version 6.1.0
 
 A few commands worth noting:
 * atlas-mvn eclipse:eclipse to build an Eclipse-importable project
@@ -39,9 +40,9 @@ Installation
 
 
 # Configuration
-All configuration is done directly in the properties file. Current values and reload actions are possible from the Administration section of Jira > Add-ons > Slack-it
-* Once deployed, you need to create a custom field of type 'Slack channel custom field'. This custom field will store the Slack channel id associated to an issue
-* You will need to edit the properties to add the id of this custom field and reload the configuration and you are all set
+An all configuration done directly in the properties file. Current values and reload actions are possible from the Administration section of Jira > Add-ons > Slack-it
+* Once deployed, you need to create a custom field of type 'Slack channel custom field'. This custom field will store the Slack channel id associated to an issue.
+* You will need to edit the properties to add the id of this custom field and reload the configurations. That you are all setup.
 
 Usage
 ============

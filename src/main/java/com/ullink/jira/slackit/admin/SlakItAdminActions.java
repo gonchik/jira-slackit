@@ -9,7 +9,7 @@ public class SlakItAdminActions extends JiraWebActionSupport {
 
     private static final long serialVersionUID = -5950096754381886768L;
     private static final Logger LOG = Logger.getLogger(SlackItConfigurationHolder.class);
-    private SlackItConfigurationHolder slackItConfigurationHolder;
+    private final SlackItConfigurationHolder slackItConfigurationHolder;
     
     public SlakItAdminActions(SlackItConfigurationHolder slackItConfigurationHolder){
         this.slackItConfigurationHolder = slackItConfigurationHolder;
