@@ -6,7 +6,7 @@
 
     <groupId>com.ullink.jira</groupId>
     <artifactId>jira-slackit</artifactId>
-    <version>8.5.0</version>
+    <version>8.5.1</version>
     <name>Slack It</name>
     <description>The Slack extension for Jira. Link your Jira issues and you Slack channels to create
         interactive and efficient discussions</description>
@@ -18,6 +18,12 @@
             <artifactId>activeobjects-plugin</artifactId>
             <version>${ao.version}</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.code.gson</groupId>
+                    <artifactId>gson</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -145,14 +151,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.atlassian.maven.plugins</groupId>
-                <artifactId>maven-jira-plugin</artifactId>
-                <version>${amps.version}</version>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -161,17 +161,29 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.6.0.1398</version>
+                <version>3.7.0.1746</version>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>5.3.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
     <properties>
         <jira.version>7.0.0</jira.version>
-        <amps.version>6.3.21</amps.version>
+        <amps.version>8.0.2</amps.version>
         <atlassian.spring.scanner.version>1.2.6</atlassian.spring.scanner.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <ao.version>1.4.0</ao.version>
+        <ao.version>2.0.0</ao.version>
     </properties>
     <organization>
         <name>Itiviti Group AB</name>

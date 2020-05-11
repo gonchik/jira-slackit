@@ -56,7 +56,7 @@ public class SlackPanel extends AbstractJiraContextProvider {
 
         JiraMembers jiraMembers = new JiraMembers();
 
-        addStandardIssuecontacts(jiraMembers, issue);
+        addStandardIssueContacts(jiraMembers, issue);
         addCustomfieldsContacts(jiraMembers, issue);
         addLinkedIssuesContacts(jiraMembers, issue);
 
@@ -67,7 +67,7 @@ public class SlackPanel extends AbstractJiraContextProvider {
         return params;
     }
 
-    private void addStandardIssuecontacts(JiraMembers jiraMembers, Issue issue) {
+    private void addStandardIssueContacts(JiraMembers jiraMembers, Issue issue) {
         jiraMembers.setCurrentUser(JiraMember.getJiraMember(ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()));
 
         if (issue.getReporter() != null) {
