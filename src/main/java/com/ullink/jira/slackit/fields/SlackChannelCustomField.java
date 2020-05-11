@@ -31,7 +31,7 @@ public class SlackChannelCustomField extends GenericTextCFType implements Sortab
     @Nonnull
     public Map<String, Object> getVelocityParameters(Issue issue, CustomField field, FieldLayoutItem fieldLayoutItem) {
         Map<String, Object> params = super.getVelocityParameters(issue, field, fieldLayoutItem);
-        if (issue.getCustomFieldValue(field) == null){
+        if (issue == null || field == null || issue.getCustomFieldValue(field) == null) {
             // let's send the params as is, that exception should be easy handled on ui side
             return params;
         }

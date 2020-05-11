@@ -41,7 +41,7 @@ public interface SlackItConfigurationHolder {
     
     public CustomField getSlackChannelCustomField();
     
-    public List<CustomField> getCustomfieldsForChannelMembers();
+    public List<CustomField> getCustomFieldsForChannelMembers();
 
     public Set<ApplicationUser> getCustomFieldUsersForChannelMembers(Issue issue);
 	

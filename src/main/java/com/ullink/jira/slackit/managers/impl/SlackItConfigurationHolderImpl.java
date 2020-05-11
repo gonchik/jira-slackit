@@ -56,7 +56,7 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
     private CustomField slackItChannelIdCF;
     private Properties slackItProperties;
 
-    private List<CustomField> channelMembersCustomfields;
+    private List<CustomField> channelMembersCustomFields;
     private HashMap<String, HashSet<String>> channelMembersIssueLinks;
     private ProjectRoleManager projectRoleManager;
 
@@ -81,7 +81,7 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
         slackItProperties = loadPropertiesFile(loadingErrorCollection);
         if (slackItProperties != null && ! slackItProperties.isEmpty()) {
             loadSlackCustomField(loadingErrorCollection);
-            loadChannelMembersCustomfields(loadingErrorCollection);
+            loadChannelMembersCustomFields(loadingErrorCollection);
             loadChannelMembersIssueLinks(loadingErrorCollection);
             loadJiraUser(loadingErrorCollection);
             loadCommentRestriction(loadingErrorCollection);
@@ -138,12 +138,12 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
     }
 
     private void loadJiraUser(ErrorCollection loadingErrorCollection) {
-        String userkey = getProperty(SLACK_IT_JIRA_USER);
-        if (!StringUtils.isEmpty(userkey)) {
-            jiraUser = ComponentAccessor.getUserManager().getUserByKey(userkey);
+        String userName = getProperty(SLACK_IT_JIRA_USER);
+        if (!StringUtils.isEmpty(userName)) {
+            jiraUser = ComponentAccessor.getUserManager().getUserByName(userName);
         }
         if (jiraUser == null) {
-            loadingErrorCollection.addErrorMessage("JIRA user for slack is not defined or unknown for key " + SLACK_IT_JIRA_USER + " and value '" + userkey + "'");
+            loadingErrorCollection.addErrorMessage("JIRA user for slack is not defined or unknown for key " + SLACK_IT_JIRA_USER + " and value '" + userName + "'");
         }
     }
 
@@ -153,10 +153,10 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
         LOG.info("Loading done");
     }
 
-    private void loadChannelMembersCustomfields(ErrorCollection loadingErrorCollection) {
+    private void loadChannelMembersCustomFields(ErrorCollection loadingErrorCollection) {
         LOG.info("Loading user custom fields holding channel members candidates");
         String listOfIDs = getProperty(SLACK_IT_MEMBERS_CUSTOMFIELDS);
-        channelMembersCustomfields = new ArrayList<>();
+        channelMembersCustomFields = new ArrayList<>();
         if (StringUtils.isEmpty(listOfIDs)) {
             loadingErrorCollection.addErrorMessage("No specific customfields setup for addition slack channel membership");
             return;
@@ -170,13 +170,13 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
                 return;
             } else if (tmp.getCustomFieldType() instanceof UserCFType || tmp.getCustomFieldType() instanceof MultiUserCFType) {
                 LOG.info("Adding customfield '" + tmp.getFieldName() + "' as possible channel member");
-                channelMembersCustomfields.add(tmp);
+                channelMembersCustomFields.add(tmp);
             } else {
                 loadingErrorCollection.addErrorMessage("Custom field '" + tmp.getFieldName() + "'/'" + tmp.getId() + "' is not a valid user or multiuser field, skipping");
                 return;
             }
         }
-        LOG.info("List of custom fields for channel members initialized with " + channelMembersCustomfields.size() + " customfields");
+        LOG.info("List of custom fields for channel members initialized with " + channelMembersCustomFields.size() + " customfields");
     }
 
     private void loadSlackCustomField(ErrorCollection loadingErrorCollection) {
@@ -287,8 +287,8 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
     }
 
     @Override
-    public List<CustomField> getCustomfieldsForChannelMembers() {
-        return channelMembersCustomfields;
+    public List<CustomField> getCustomFieldsForChannelMembers() {
+        return channelMembersCustomFields;
     }
 
     private List<Issue> getValidLinkedIssuesForChannelMembers(Issue issue) {
@@ -323,7 +323,7 @@ public class SlackItConfigurationHolderImpl implements SlackItConfigurationHolde
      */
     public Set<ApplicationUser> getCustomFieldUsersForChannelMembers(Issue issue) {
         Set<ApplicationUser> members = new HashSet<>();
-        for (CustomField cf : channelMembersCustomfields) {
+        for (CustomField cf : channelMembersCustomFields) {
             if (cf.getCustomFieldType() instanceof UserCFType && (issue.getCustomFieldValue(cf) != null)) {
                 members.add((ApplicationUser) issue.getCustomFieldValue(cf));
             } else if ((cf.getCustomFieldType() instanceof MultiUserCFType) && (issue.getCustomFieldValue(cf) != null)) {

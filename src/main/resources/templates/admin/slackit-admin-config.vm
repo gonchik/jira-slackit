@@ -1,3 +1,9 @@
+#if (${action.slackItConfigurationHolder.getJIRAUserForSlack()})
+    #set ($botUser = ${action.slackItConfigurationHolder.getJIRAUserForSlack()})
+#else
+    #set ($botUser = "Please, be sure you configured the bod user properly")
+#end
+
 <table class="aui aui-table-rowhover">
     <caption>Current active setup</caption>
     <thead>
@@ -16,20 +22,20 @@
         <td class="slack-table-column">${action.slackItConfigurationHolder.getSlackApiBaseUrl()}</td>
     </tr>
     <tr>
-        <td class="slack-table-major-column"><b>Slack channel customfield</b></td>
+        <td class="slack-table-major-column"><b>Slack channel custom field</b></td>
         <td class="slack-table-column">${action.slackItConfigurationHolder.getSlackChannelCustomField()}</td>
     </tr>
     <tr>
         <td class="slack-table-major-column"><b>Slackbot Jira user</b></td>
-        <td class="slack-table-column">${action.slackItConfigurationHolder.getJIRAUserForSlack()}</td>
+        <td class="slack-table-column">${botUser}</td>
     </tr>
     <tr>
         <td class="slack-table-major-column"><b>Visibility of slackbot comments</b></td>
         <td class="slack-table-column">${action.slackItConfigurationHolder.getCommentVisibility()}</td>
     </tr>
     <tr>
-        <td class="slack-table-major-column"><b>User customfields for addtional members</b></td>
-        <td class="slack-table-column">${action.slackItConfigurationHolder.getCustomfieldsForChannelMembers()}</td>
+        <td class="slack-table-major-column"><b>User custom fields for additional members</b></td>
+        <td class="slack-table-column">${action.slackItConfigurationHolder.getCustomFieldsForChannelMembers()}</td>
     </tr>
     <tr>
         <td class="slack-table-major-column"><b>Proxy setup</b></td>
