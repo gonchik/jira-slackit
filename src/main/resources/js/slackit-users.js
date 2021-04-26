@@ -16,7 +16,7 @@ var HttpRxClient = (function () {
             return subject;
         }
 
-        AJS.$.getJSON(slackApiBaseUrl + "/channels.info?channel=" + channelId + "&token=" + token, function (json) {
+        AJS.$.getJSON(slackApiBaseUrl + "/conversations.info?channel=" + channelId + "&token=" + token, function (json) {
             if (json.error) {
                 subject.onNext({
                     ok: false,
@@ -49,7 +49,7 @@ var HttpRxClient = (function () {
             return subject;
         }
 
-        AJS.$.getJSON(slackApiBaseUrl + "/channels.history?channel=" + channelId + "&token=" + token, function (json) {
+        AJS.$.getJSON(slackApiBaseUrl + "/conversations.history?channel=" + channelId + "&token=" + token, function (json) {
             if (json.error) {
                 subject.onNext({
                     ok: false,
@@ -102,7 +102,7 @@ var HttpRxClient = (function () {
     // Get observable for channels.list (list of limited channel objects), index by channel name
     HttpRxClient.prototype.getSlackChannelsListObservable = function (token, slackApiBaseUrl) {
         var subject = new Rx.AsyncSubject();
-        AJS.$.getJSON(slackApiBaseUrl + "/channels.list?token=" + token + "&exclude_archived=0", function (json) {
+        AJS.$.getJSON(slackApiBaseUrl + "/conversations.list?token=" + token + "&exclude_archived=0", function (json) {
             if (json.error) {
                 subject.onError(json.error);
                 subject.onCompleted();
@@ -122,7 +122,7 @@ var HttpRxClient = (function () {
 
     HttpRxClient.prototype.createSlackChannelObservable = function (channelName, token, slackApiBaseUrl) {
         var subject = new Rx.AsyncSubject();
-        AJS.$.getJSON(slackApiBaseUrl + "/channels.create?name=" + channelName + "&token=" + token, function (json) {
+        AJS.$.getJSON(slackApiBaseUrl + "/conversations.create?name=" + channelName + "&token=" + token, function (json) {
 
             if (json.error) {
                 subject.onNext({
@@ -144,7 +144,7 @@ var HttpRxClient = (function () {
 
     HttpRxClient.prototype.joinSlackChannelObservable = function (channelName, token, slackApiBaseUrl) {
         var subject = new Rx.AsyncSubject();
-        AJS.$.getJSON(slackApiBaseUrl + "/channels.join?name=" + channelName + "&token=" + token, function (json) {
+        AJS.$.getJSON(slackApiBaseUrl + "/conversations.join?name=" + channelName + "&token=" + token, function (json) {
 
             if (json.error) {
                 subject.onNext({
@@ -179,7 +179,7 @@ var HttpRxClient = (function () {
 
     HttpRxClient.prototype.inviteSlackUserToChannelObservable = function (channelId, userId, token, slackApiBaseUrl) {
         var subject = new Rx.AsyncSubject();
-        AJS.$.getJSON(slackApiBaseUrl + "/channels.invite?token=" + token + "&channel=" + channelId + "&user=" + userId, function (json) {
+        AJS.$.getJSON(slackApiBaseUrl + "/conversations.invite?token=" + token + "&channel=" + channelId + "&user=" + userId, function (json) {
             if (json.error) {
                 subject.onNext({
                     ok: false,
@@ -201,7 +201,7 @@ var HttpRxClient = (function () {
 
     HttpRxClient.prototype.setTopicAsJiraLinkToChannelObservable = function (channelId, topic, token, slackApiBaseUrl) {
         var subject = new Rx.AsyncSubject();
-        AJS.$.getJSON(slackApiBaseUrl + "/channels.setTopic?token=" + token + "&channel=" + channelId + "&topic=" + topic, function (json) {
+        AJS.$.getJSON(slackApiBaseUrl + "/conversations.setTopic?token=" + token + "&channel=" + channelId + "&topic=" + topic, function (json) {
             if (json.error) {
                 subject.onNext({
                     ok: false,
@@ -241,7 +241,7 @@ var SlackItClient = (function () {
         this.rxClient.getSlackChannelsListObservable(this.context.token, this.context.slackApiBaseUrl)
             .subscribe(
                 function (slackChannelsData) {
-                    console.log('* channels: ' + JSON.stringify(slackChannelsData));
+                    // console.log('* channels: ' + JSON.stringify(slackChannelsData));
                     AJS.$('#loading-div').hide();
                     AJS.$('#loading-spinner').spinStop();
                     slackData.channels = slackChannelsData;
@@ -613,6 +613,7 @@ var SlackItClient = (function () {
 
         slackData.context.skipCreateChannel = false;
         var topic = AJS.params.baseURL + '/browse/' + this.context.jiraIssueKey;
+        /*
         this.setTopicAsJiraLinkToChannelObservable(this.context.channelId, topic, this.context.token, this.context.slackApiBaseUrl).subscribe(
             function (topicSetData) {
                 if (topicSetData.ok) {
@@ -625,6 +626,7 @@ var SlackItClient = (function () {
             function () {
             }
         );
+        */
         this.onSlackItDialogDoStepInviteUsers(slackData, this.context.slackChannelPreferredName);
     };
 

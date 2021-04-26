@@ -6,7 +6,7 @@
 
     <groupId>com.ullink.jira</groupId>
     <artifactId>jira-slackit</artifactId>
-    <version>8.5.1</version>
+    <version>8.6.0</version>
     <name>Slack It</name>
     <description>The Slack extension for Jira. Link your Jira issues and you Slack channels to create
         interactive and efficient discussions</description>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.10.3</version>
+            <version>2.10.10</version>
             <scope>provided</scope>
         </dependency>
 
@@ -171,12 +171,12 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.7.0.1746</version>
+                <version>3.8.0.2131</version>
             </plugin>
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>5.3.2</version>
+                <version>6.1.5</version>
                 <executions>
                     <execution>
                         <goals>
